@@ -9,13 +9,9 @@ namespace Laborator3_PSSC
 {
     class Program
     {
-        private static readonly Random random = new Random();
-
         static void Main()
         {
-            Task.Run(async () => { await Start(); })
-                            .GetAwaiter()
-                            .GetResult();
+            Task.Run(async () => { await Start(); }).GetAwaiter().GetResult();
         }
 
         static async Task Start()
@@ -45,25 +41,25 @@ namespace Laborator3_PSSC
             List<EmptyShoppingCart> listOfShoppingCarts = new();
             do
             {
-                var quantity = ReadValue("Cantitate produs: ");
+                var quantity = ReadValue("Quantity: ");
                 if (string.IsNullOrEmpty(quantity))
                 {
                     break;
                 }
 
-                var product_code = ReadValue("Cod produs: ");
+                var product_code = ReadValue("Product code: ");
                 if (string.IsNullOrEmpty(product_code))
                 {
                     break;
                 }
 
-                var address = ReadValue("Adresa: ");
+                var address = ReadValue("Address: ");
                 if (string.IsNullOrEmpty(address))
                 {
                     break;
                 }
 
-                var price = ReadValue("Pret: ");
+                var price = ReadValue("Price: ");
                 if (string.IsNullOrEmpty(price))
                 {
                     break;
