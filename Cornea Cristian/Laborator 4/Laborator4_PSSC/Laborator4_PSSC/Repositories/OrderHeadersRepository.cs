@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LanguageExt;
 using Microsoft.EntityFrameworkCore;
 using Laborator4_PSSC.Domain.Repositories;
-using static Laborator4_PSSC.Domain.ShoppingCarts;
 using static LanguageExt.Prelude;
-using Laborator4_PSSC.Domain;
-using Laborator4_PSSC.Models;
 
 namespace Laborator4_PSSC.Repositories
 {

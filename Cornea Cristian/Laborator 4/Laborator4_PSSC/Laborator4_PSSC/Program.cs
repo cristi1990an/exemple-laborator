@@ -12,8 +12,6 @@ namespace Laborator4_PSSC
 {
     class Program
     {
-        private static readonly Random random = new Random();
-
         private static string ConnectionString = "Server=DESKTOP-NEQI476;Database=Laborator5_PSSC;Trusted_Connection=True;MultipleActiveResultSets=true";
 
         static void Main(string[] args)
@@ -40,10 +38,6 @@ namespace Laborator4_PSSC
 
             PayShoppingCartWorkflow workflow = new(productsRepository, orderHeadersRepository, orderLinesRepository, logger);
             var result = await workflow.ExecuteAsync(command);
-            /*var listOfGrades = ReadListOfShoppingCarts().ToArray();
-            PayShoppingCartCommand command = new(listOfGrades);
-            PayShoppingCartWorkflow workflow = new PayShoppingCartWorkflow();
-            var result = await workflow.ExecuteAsync(command, CheckProductExists, CheckStock, CheckAddress);*/
 
             result.Match(
                     whenShoppingCartsPaidFailedEvent: @event =>

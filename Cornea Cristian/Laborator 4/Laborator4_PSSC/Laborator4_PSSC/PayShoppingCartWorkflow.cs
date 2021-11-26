@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using static Laborator4_PSSC.Domain.ShoppingCartsPaidEvent;
 using static Laborator4_PSSC.Domain.ShoppingCarts;

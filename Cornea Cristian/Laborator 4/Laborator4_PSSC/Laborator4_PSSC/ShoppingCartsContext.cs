@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Laborator4_PSSC.Models;
 
 namespace Laborator4_PSSC
@@ -12,6 +7,7 @@ namespace Laborator4_PSSC
     {
         public ShoppingCartsContext(DbContextOptions<ShoppingCartsContext> options) : base(options)
         {
+
         }
 
         public DbSet<OrderHeaderDto> OrderHeaders { get; set; }
