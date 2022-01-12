@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	<PackageReference Include="Microsoft.Extensions.Azure" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Laborator_6_PSSC.Events.ServiceBus\Laborator_6_PSSC.Events.ServiceBus.csproj" />
+    <ProjectReference Include="..\Laborator_6_PSSC.Domain\Laborator_6_PSSC.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

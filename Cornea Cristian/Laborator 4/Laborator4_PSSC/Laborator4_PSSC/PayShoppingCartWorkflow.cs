@@ -44,11 +44,9 @@ namespace Laborator4_PSSC.Domain
                     Right: paidShoppingCarts => new ShoppingCartsPaidScucceededEvent(paidShoppingCarts.Csv, paidShoppingCarts.PublishedDate)
                 );
         }
-        private async Task<Either<IShoppingCarts, PaidShoppingCarts>> ExecuteWorkflowAsync(EmptyShoppingCarts emptyShoppingCarts,
-                                                                                          IEnumerable<CalculatedShoppingCart> existingOrderLines,
-                                                                                          Func<ProductCode, Option<ProductCode>> checkProductExists)
+        private async Task<Either<IShoppingCarts, PaidShoppingCarts>> ExecuteWorkflowAsync
+            (EmptyShoppingCarts emptyShoppingCarts, IEnumerable<CalculatedShoppingCart> existingOrderLines, Func<ProductCode, Option<ProductCode>> checkProductExists)
         {
-
             IShoppingCarts shoppingCarts = await ValidateShoppingCarts(checkProductExists, emptyShoppingCarts);
             shoppingCarts = CalculateFinalPrices(shoppingCarts);
             shoppingCarts = MergeGrades(shoppingCarts, existingOrderLines);
@@ -76,7 +74,8 @@ namespace Laborator4_PSSC.Domain
         }
 
         private ShoppingCartsPaidFailedEvent GenerateFailedEvent(IShoppingCarts shoppingCarts) =>
-            shoppingCarts.Match<ShoppingCartsPaidFailedEvent>(
+            shoppingCarts.Match<ShoppingCartsPaidFailedEvent>
+            (
                 whenEmptyShoppingCarts: emptyShoppingCarts => new($"Invalid state {nameof(EmptyShoppingCarts)}"),
                 whenValidatedShoppingCarts: validatedShoppingCarts => new($"Invalid state {nameof(ValidatedShoppingCarts)}"),
                 whenUnvalidatedShoppingCarts: unvalidatedShoppingCarts =>
@@ -85,7 +84,8 @@ namespace Laborator4_PSSC.Domain
                     return new(unvalidatedShoppingCarts.Ex.Message);
                 },
                 whenCalculatedShoppingCarts: calculatedExamGrades => new($"Invalid state {nameof(CalculatedShoppingCarts)}"),
-                whenPaidShoppingCarts: publishedExamGrades => new($"Invalid state {nameof(PaidShoppingCarts)}"));
+                whenPaidShoppingCarts: publishedExamGrades => new($"Invalid state {nameof(PaidShoppingCarts)}")
+            );
     }
 
 }

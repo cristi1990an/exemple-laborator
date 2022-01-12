@@ -16,9 +16,7 @@ namespace Laborator4_PSSC
 
         static void Main(string[] args)
         {
-            Task.Run(async () => { await Start(args); })
-                            .GetAwaiter()
-                            .GetResult();
+            Task.Run(async () => { await Start(args); }).GetAwaiter().GetResult();
         }
 
         static async Task Start(string[] args)
@@ -28,9 +26,7 @@ namespace Laborator4_PSSC
 
             var listOfGrades = ReadListOfShoppingCarts().ToArray();
             PayShoppingCartCommand command = new(listOfGrades);
-            var dbContextBuilder = new DbContextOptionsBuilder<ShoppingCartsContext>()
-                                                .UseSqlServer(ConnectionString)
-                                                .UseLoggerFactory(loggerFactory);
+            var dbContextBuilder = new DbContextOptionsBuilder<ShoppingCartsContext>().UseSqlServer(ConnectionString).UseLoggerFactory(loggerFactory);
             ShoppingCartsContext shoppingCartsContext = new ShoppingCartsContext(dbContextBuilder.Options);
             ProductsRepository productsRepository = new(shoppingCartsContext);
             OrderHeadersRepository orderHeadersRepository = new(shoppingCartsContext);
@@ -73,7 +69,6 @@ namespace Laborator4_PSSC
             List<EmptyShoppingCart> listOfShoppingCarts = new();
             do
             {
-                //read registration number and grade and create a list of greads
                 var quantity = ReadValue("Cantitatea produsului comandat: ");
                 if (string.IsNullOrEmpty(quantity))
                 {
@@ -108,7 +103,5 @@ namespace Laborator4_PSSC
             Console.Write(prompt);
             return Console.ReadLine();
         }
-
-
     }
 }

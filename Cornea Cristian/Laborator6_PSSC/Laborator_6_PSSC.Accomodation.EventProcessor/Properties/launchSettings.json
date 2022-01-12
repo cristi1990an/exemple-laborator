@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "L6PSSCDMA.Accomodation.EventProcessor": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "NETCORE_ENVIRONMENT": "development"
+      }
+    }
+  }
+}
